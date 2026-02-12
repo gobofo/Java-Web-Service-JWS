@@ -14,7 +14,9 @@ public class Endpoints {
     @Path("/hello/{name}")
     @GET
     public Response helloWorld(@PathParam("name") String name) {
-        HelloResponse content = new HelloResponse("Hello "+name);
+        if(name == null)
+            return Response.status(Response.Status.BAD_REQUEST).build()
+        HelloResponse content = new HelloResponse("hello "+name);
         return Response.ok(content).build();
     }
 
@@ -22,7 +24,7 @@ public class Endpoints {
     @POST
     public Response reverse(ReverseRequest request)
     {
-        if(request == null || request.getContent() == null)
+        if(request == null || request.getContent() == null || request.getContent().isEmpty())
         {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
