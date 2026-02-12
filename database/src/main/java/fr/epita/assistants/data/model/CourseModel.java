@@ -20,7 +20,7 @@ public class CourseModel {
     List<String> tag;
 
     @OneToMany
-    @JoinColumn(name = "id_course")
+    @JoinColumn(name = "course_id")
     List<StudentModel> course_id;
 
 }
