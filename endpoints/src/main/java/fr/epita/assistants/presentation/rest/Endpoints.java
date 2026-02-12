@@ -15,7 +15,7 @@ public class Endpoints {
     @GET
     public Response helloWorld(@PathParam("name") String name) {
         if(name == null)
-            return Response.status(Response.Status.BAD_REQUEST).build()
+            return Response.status(Response.Status.BAD_REQUEST).build();
         HelloResponse content = new HelloResponse("hello "+name);
         return Response.ok(content).build();
     }
