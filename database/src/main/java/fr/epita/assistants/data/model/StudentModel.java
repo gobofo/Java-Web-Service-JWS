@@ -9,13 +9,13 @@ public class StudentModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id_student;
+    long id;
 
     @Column
     String name;
 
-    @ManyToOne @JoinColumn(name="id_course")
-    CourseModel course;
+    @ManyToOne @JoinColumn(name="course_id")
+    CourseModel course_id;
 
 
 

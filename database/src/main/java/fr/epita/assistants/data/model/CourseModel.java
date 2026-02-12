@@ -10,16 +10,17 @@ import java.util.List;
 public class CourseModel {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id_course;
+    long id;
 
     @Column
     String name;
 
     @ElementCollection
-    @CollectionTable(name = "course_model_tags", joinColumns = @JoinColumn(name="id_course"))
+    @CollectionTable(name = "course_model_tags", joinColumns = @JoinColumn(name="course_id"))
     List<String> tag;
 
-    @OneToMany (targetEntity = StudentModel.class)
-    List<StudentModel> liste = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "id_course")
+    List<StudentModel> course_id;
 
 }
