@@ -25,7 +25,7 @@ public class yakadexEntryModel {
     @Column(name = "second_type")
     ElementType secondType;
 
-    @Column(columnDefinition = "varchar")
+    @Column()
     String description;
 
     @OneToOne

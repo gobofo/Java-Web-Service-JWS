@@ -19,7 +19,7 @@ public class yakamonModel {
     @Column(name="energy_points")
     Integer energyPoints;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "yakadex_entry_id", referencedColumnName = "id")
     yakadexEntryModel yakadexEntry;
 }

@@ -14,6 +14,7 @@ public class itemModel {
     @Column
     Integer quantity;
 
+    @Enumerated(EnumType.STRING)
     @Column
     ItemType type;
 
