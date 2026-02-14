@@ -41,6 +41,8 @@ public class MapConverter {
                 Lmap.add(line);
                 line = new ArrayList<>();
                 i++;
+                if(i>=Smap.length())
+                    break;
             }
 
             char number = Smap.charAt(i);
@@ -53,7 +55,8 @@ public class MapConverter {
                 line.add(tile);
             }
         }
-        Lmap.add(line);
+        if(!line.isEmpty())
+            Lmap.add(line);
 
         return Lmap;
     }
