@@ -2,6 +2,7 @@ package fr.epita.assistants.yakamon.data.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.With;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

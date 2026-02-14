@@ -1,8 +1,10 @@
 package fr.epita.assistants.yakamon.data.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
+import lombok.With;
 
 @Data
 @Entity
@@ -15,4 +17,5 @@ public class GameModel {
 
     @Column(columnDefinition = "text", nullable = false)
     public String map;
+
 }

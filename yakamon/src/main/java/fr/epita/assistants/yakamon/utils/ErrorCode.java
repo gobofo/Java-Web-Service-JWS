@@ -10,7 +10,9 @@ import static jakarta.ws.rs.core.Response.Status;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {
-    EXAMPLE_ERROR(Status.INTERNAL_SERVER_ERROR, "This is an error example");
+
+    BAD_REQUEST(Status.BAD_REQUEST, "Bad request"),
+    INTERNAL_SERVER_ERROR(Status.INTERNAL_SERVER_ERROR, "Internal server error");
 
     private final Response.Status errorCode;
 

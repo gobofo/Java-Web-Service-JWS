@@ -3,9 +3,12 @@ package fr.epita.assistants.yakamon.data.model;
 import fr.epita.assistants.yakamon.utils.ElementType;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Setter;
+import lombok.Value;
 
 @Data
 @Entity
+@Setter
 @Table(name = "yakadex_entry")
 public class YakadexEntryModel {
 
