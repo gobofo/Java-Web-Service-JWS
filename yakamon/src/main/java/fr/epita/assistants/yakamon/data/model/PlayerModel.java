@@ -1,10 +1,12 @@
 package fr.epita.assistants.yakamon.data.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Data
 @Entity
 @Table(name = "player")
 public class PlayerModel {

@@ -2,7 +2,9 @@ package fr.epita.assistants.yakamon.data.model;
 
 import fr.epita.assistants.yakamon.utils.tile.ItemType;
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "item")
 public class ItemModel {
