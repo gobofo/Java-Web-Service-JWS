@@ -1,5 +1,6 @@
 package fr.epita.assistants.yakamon.presentation.rest;
 
+import fr.epita.assistants.yakamon.converter.YakamonConverter;
 import fr.epita.assistants.yakamon.domain.service.TeamService;
 import fr.epita.assistants.yakamon.presentation.api.response.YakamonTeamResponse;
 import jakarta.inject.Inject;
@@ -14,9 +15,12 @@ public class TeamResource {
     @Inject
     TeamService teamService;
 
+    @Inject
+    YakamonConverter yakamonConverter;
+
     @GET
     @Path("/")
     public YakamonTeamResponse getTeam() {
-        return new YakamonTeamResponse(teamService.getTeam());
+        return new YakamonTeamResponse(yakamonConverter.yakamonConverter(teamService.getTeam()));
     }
 }
