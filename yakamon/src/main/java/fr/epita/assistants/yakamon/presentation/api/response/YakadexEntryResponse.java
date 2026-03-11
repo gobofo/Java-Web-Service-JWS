@@ -1,11 +1,11 @@
-package fr.epita.assistants.yakamon.domain.entity;
+package fr.epita.assistants.yakamon.presentation.api.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Value;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Value
-public class YakadexEntity {
+public class YakadexEntryResponse {
 
     Integer id;
     String name;
@@ -17,3 +17,4 @@ public class YakadexEntity {
     String description;
 
 }
+

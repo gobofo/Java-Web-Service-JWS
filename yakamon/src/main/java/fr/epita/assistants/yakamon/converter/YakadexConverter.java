@@ -1,7 +1,7 @@
 package fr.epita.assistants.yakamon.converter;
 
 import fr.epita.assistants.yakamon.data.model.YakadexEntryModel;
-import fr.epita.assistants.yakamon.domain.entity.YakadexEntity;
+import fr.epita.assistants.yakamon.presentation.api.response.YakadexEntryResponse;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import java.util.List;
 public class YakadexConverter {
 
 
-    public List<YakadexEntity> yakadexConverter(List<YakadexEntryModel> listYakadexEntryModel)
+    public List<YakadexEntryResponse> yakadexConverter(List<YakadexEntryModel> listYakadexEntryModel)
     {
-        var list = new ArrayList<YakadexEntity>();
+        var list = new ArrayList<YakadexEntryResponse>();
 
 //                listYakadexEntryModel.stream().map(e -> new YakadexEntity(
 //                e.getId(),
@@ -30,7 +30,7 @@ public class YakadexConverter {
         for(var e : listYakadexEntryModel)
         {
             if (e.caught)
-                list.add(new YakadexEntity(
+                list.add(new YakadexEntryResponse(
                         e.getId(),
                         e.getName(),
                         e.getFirstType().toString(),
@@ -40,7 +40,7 @@ public class YakadexConverter {
                         e.getCaught(),
                         e.getDescription()));
             else
-                list.add(new YakadexEntity(
+                list.add(new YakadexEntryResponse(
                         e.getId(),
                         e.getName(),
                         null,

@@ -8,8 +8,8 @@ import fr.epita.assistants.yakamon.converter.YakamonConverter;
 import fr.epita.assistants.yakamon.data.model.ItemModel;
 import fr.epita.assistants.yakamon.data.model.YakadexEntryModel;
 import fr.epita.assistants.yakamon.data.model.YakamonModel;
-import fr.epita.assistants.yakamon.domain.entity.YakadexEntity;
 import fr.epita.assistants.yakamon.domain.entity.YakamonEntity;
+import fr.epita.assistants.yakamon.presentation.api.response.YakadexEntryResponse;
 import fr.epita.assistants.yakamon.utils.ElementType;
 import fr.epita.assistants.yakamon.utils.Item;
 import fr.epita.assistants.yakamon.utils.tile.ItemType;
@@ -255,7 +255,7 @@ public class Test {
     // liste vide
     @org.junit.jupiter.api.Test
     void testYakadexConverterEmptyList() {
-        List<YakadexEntity> result = yakadexConverter.yakadexConverter(new ArrayList<>());
+        List<YakadexEntryResponse> result = yakadexConverter.yakadexConverter(new ArrayList<>());
         assertTrue(result.isEmpty());
     }
 
@@ -272,8 +272,8 @@ public class Test {
         model.evolution = null;
         model.description = "description";
 
-        List<YakadexEntity> result = yakadexConverter.yakadexConverter(List.of(model));
-        YakadexEntity entity = result.get(0);
+        List<YakadexEntryResponse> result = yakadexConverter.yakadexConverter(List.of(model));
+        YakadexEntryResponse entity = result.get(0);
         assertEquals(1, entity.getId());
         assertEquals("Yakamon", entity.getName());
         assertEquals(ElementType.FIRE.toString(), entity.getFirstType());
@@ -293,8 +293,8 @@ public class Test {
         model.firstType = ElementType.WATER;
         model.description = "description";
 
-        List<YakadexEntity> result = yakadexConverter.yakadexConverter(List.of(model));
-        YakadexEntity entity = result.get(0);
+        List<YakadexEntryResponse> result = yakadexConverter.yakadexConverter(List.of(model));
+        YakadexEntryResponse entity = result.get(0);
         assertEquals(2, entity.getId());
         assertEquals("Yakamon", entity.getName());
         assertNull(entity.getFirstType());
@@ -315,8 +315,8 @@ public class Test {
         model.evolution = null;
         model.description = "description";
 
-        List<YakadexEntity> result = yakadexConverter.yakadexConverter(List.of(model));
-        YakadexEntity entity = result.get(0);
+        List<YakadexEntryResponse> result = yakadexConverter.yakadexConverter(List.of(model));
+        YakadexEntryResponse entity = result.get(0);
         assertEquals(ElementType.WATER.toString(), entity.getFirstType());
         assertEquals(ElementType.FIRE.toString(), entity.getSecondType());
     }
@@ -337,8 +337,8 @@ public class Test {
         model.evolution = evolution;
         model.description = "description";
 
-        List<YakadexEntity> result = yakadexConverter.yakadexConverter(List.of(model));
-        YakadexEntity entity = result.get(0);
+        List<YakadexEntryResponse> result = yakadexConverter.yakadexConverter(List.of(model));
+        YakadexEntryResponse entity = result.get(0);
         assertEquals(99, entity.getEvolutionId());
         assertEquals(20, entity.getEvolveThreshold());
     }
@@ -363,7 +363,7 @@ public class Test {
         notCaught.firstType = ElementType.WATER;
         notCaught.description = "jamais vu";
 
-        List<YakadexEntity> result = yakadexConverter.yakadexConverter(List.of(caught, notCaught));
+        List<YakadexEntryResponse> result = yakadexConverter.yakadexConverter(List.of(caught, notCaught));
         assertEquals(2, result.size());
         assertEquals(ElementType.FIRE.toString(), result.get(0).getFirstType());
         assertNull(result.get(1).getFirstType());
