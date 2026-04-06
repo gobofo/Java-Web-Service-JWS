@@ -2,8 +2,10 @@ package fr.epita.assistants.yakamon.presentation.rest;
 
 import fr.epita.assistants.yakamon.converter.YakamonConverter;
 import fr.epita.assistants.yakamon.domain.service.FeedService;
+import fr.epita.assistants.yakamon.domain.service.RenameService;
 import fr.epita.assistants.yakamon.domain.service.TeamService;
 import fr.epita.assistants.yakamon.presentation.api.request.FeedRequest;
+import fr.epita.assistants.yakamon.presentation.api.request.RenameRequest;
 import fr.epita.assistants.yakamon.presentation.api.response.YakamonResponse;
 import fr.epita.assistants.yakamon.presentation.api.response.YakamonTeamResponse;
 import jakarta.inject.Inject;
@@ -24,6 +26,9 @@ public class TeamResource {
     FeedService feedService;
 
     @Inject
+    RenameService renameService;
+
+    @Inject
     YakamonConverter yakamonConverter;
 
     @GET
@@ -36,5 +41,11 @@ public class TeamResource {
     @Path("/{uuid}/feed")
     public YakamonResponse feedYakamon(@PathParam("uuid") UUID uuid, FeedRequest request) {
         return yakamonConverter.yakamonConverter(feedService.feed(uuid, request.getQuantity()));
+    }
+
+    @PATCH
+    @Path("/{uuid}/rename")
+    public YakamonResponse renameYakamon(@PathParam("uuid") UUID uuid, RenameRequest request) {
+        return yakamonConverter.yakamonConverter(renameService.rename(uuid, request.getNewNickname()));
     }
 }
