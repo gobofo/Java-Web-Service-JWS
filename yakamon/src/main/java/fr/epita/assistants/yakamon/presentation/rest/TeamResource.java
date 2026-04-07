@@ -1,6 +1,7 @@
 package fr.epita.assistants.yakamon.presentation.rest;
 
 import fr.epita.assistants.yakamon.converter.YakamonConverter;
+import fr.epita.assistants.yakamon.domain.service.EvolveService;
 import fr.epita.assistants.yakamon.domain.service.FeedService;
 import fr.epita.assistants.yakamon.domain.service.RenameService;
 import fr.epita.assistants.yakamon.domain.service.TeamService;
@@ -26,6 +27,9 @@ public class TeamResource {
     FeedService feedService;
 
     @Inject
+    EvolveService evolveService;
+
+    @Inject
     RenameService renameService;
 
     @Inject
@@ -41,6 +45,12 @@ public class TeamResource {
     @Path("/{uuid}/feed")
     public YakamonResponse feedYakamon(@PathParam("uuid") UUID uuid, FeedRequest request) {
         return yakamonConverter.yakamonConverter(feedService.feed(uuid, request.getQuantity()));
+    }
+
+    @POST
+    @Path("/{uuid}/evolve")
+    public YakamonResponse evolveYakamon(@PathParam("uuid") UUID uuid) {
+        return yakamonConverter.yakamonConverter(evolveService.evolve(uuid));
     }
 
     @PATCH
